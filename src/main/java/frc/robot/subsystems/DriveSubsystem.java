@@ -9,10 +9,15 @@
 */
 package frc.robot.subsystems;
 
-//import com.revrobotics.CANEncoder;
-import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.SPI;
+
+import com.revrobotics.RelativeEncoder;
+
+import com.kauailabs.navx.frc.AHRS;
+
 import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase 
@@ -20,15 +25,17 @@ public class DriveSubsystem extends SubsystemBase
 
   public static MecanumDrive m_drive;
 
-  private PWMSparkMax frontLeftMotor = new PWMSparkMax(Constants.DriveSystemConstants.FRONT_LEFT_MOTOR_PWM_PORT);
-  private PWMSparkMax frontRightMotor = new PWMSparkMax(Constants.DriveSystemConstants.FRONT_RIGHT_MOTOR_PWM_PORT);
-  private PWMSparkMax rearLeftMotor = new PWMSparkMax(Constants.DriveSystemConstants.REAR_LEFT_MOTOR_PWM_PORT);
-  private PWMSparkMax rearRightMotor = new PWMSparkMax(Constants.DriveSystemConstants.REAR_RIGHT_MOTOR_PWM_PORT);
+  public static AHRS gyro;
 
-  //private RelativeEncoder m_frontLeftEncoder = frontLeftMotor.getEncoder();
-  //private RelativeEncoder m_frontRightEncoder = frontRightMotor.getEncoder();
-  //private RelativeEncoder m_backRightEncoder = backRightMotor.getEncoder();
-  //private RelativeEncoder m_backLeftEncoder = backLeftMotor.getEncoder();
+  private CANSparkMax frontLeftMotor = new CANSparkMax();
+  private CANSparkMax frontRightMotor = new CANSparkMax();
+  private CANSparkMax rearLeftMotor = new CANSparkMax();
+  private CANSparkMax rearRightMotor = new CANSparkMax();
+
+  private RelativeEncoder m_frontLeftEncoder = frontLeftMotor.getEncoder();
+  private RelativeEncoder m_frontRightEncoder = frontRightMotor.getEncoder();
+  private RelativeEncoder m_backRightEncoder = rearRightMotor.getEncoder();
+  private RelativeEncoder m_backLeftEncoder = rearLeftMotor.getEncoder();
 
   public DriveSubsystem() 
   {
@@ -39,8 +46,10 @@ public class DriveSubsystem extends SubsystemBase
 
     m_drive = new MecanumDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
 
-    // ((Object) m_drive).setRightSideInverted(false);
-    //m_drive.setMaxOutput(.80);
+    m_drive.setMaxOutput(.80);
+
+    gyro = new AHRS(SPI.Port.kMXP);
+
   }
 
   public void mecanumDrive(double leftY, double leftX, double rightX)

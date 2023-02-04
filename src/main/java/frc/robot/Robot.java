@@ -3,13 +3,13 @@
 // the WPILib BSD license file in the root directory of this project.
 
 // Alpha Omega borrowed base code from: https://github.com/zholly15/5588-Reign-Robotics-Charged-Up-2023
+// and https://github.com/nerdherd/ChargedUp2023/tree/dev/src/main/java/frc/robot
 
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.RobotContainer;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 
@@ -25,6 +25,7 @@ import edu.wpi.first.cscore.UsbCamera;
 public class Robot extends TimedRobot 
 {
   private Command m_autonomousCommand;
+  private RobotContainer m_robotContainer;
   
   UsbCamera lifecam;
 
@@ -36,12 +37,11 @@ public class Robot extends TimedRobot
   @Override
   public void robotInit() 
   {
-    // Instantiate our RobotContainer. This will perform all our button bindings,
+    // Instantiate our RobotContainer. This willS perform all our button bindings,
     // and put our
     // autonomous chooser on the dashboard.
-    RobotContainer m_robotContainer = new RobotContainer();
+    m_robotContainer = new RobotContainer();
     lifecam = CameraServer.startAutomaticCapture(0);
-
   }
 
   /**
@@ -73,6 +73,7 @@ public class Robot extends TimedRobot
   @Override
   public void disabledInit() 
   {
+    CommandScheduler.getInstance().cancelAll();
   }
 
   @Override
