@@ -19,10 +19,10 @@ public final class Constants
         public static final int SMART_LIMIT = 80;
 
         // Motor PWM Ports
-        public static final int FRONT_LEFT_MOTOR_PWM_PORT = 2;
-        public static final int REAR_LEFT_MOTOR_PWM_PORT = 3;
-        public static final int FRONT_RIGHT_MOTOR_PWM_PORT = 1;
-        public static final int REAR_RIGHT_MOTOR_PWM_PORT = 0;
+        public static final int REAR_RIGHT_MOTOR_CAN_ID = 1;
+        public static final int FRONT_RIGHT_MOTOR_CAN_ID = 2;
+        public static final int FRONT_LEFT_MOTOR_CAN_ID = 3;
+        public static final int REAR_LEFT_MOTOR_CAN_ID = 4;
 
         // Motor inversion
         public static final boolean RIGHT_SIDE_MOTORS_INVERTED = true;
