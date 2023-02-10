@@ -13,11 +13,8 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import edu.wpi.first.wpilibj.SPI;
 
 import com.revrobotics.RelativeEncoder;
-
-import com.kauailabs.navx.frc.AHRS;
 
 import frc.robot.Constants;
 
@@ -26,12 +23,10 @@ public class DriveSubsystem extends SubsystemBase
 
   public static MecanumDrive m_drive;
 
-  public static AHRS gyro;
-
-  private CANSparkMax frontLeftMotor = new CANSparkMax(Constants.DriveSystemConstants.FRONT_LEFT_MOTOR_CAN_ID, MotorType.kBrushless) ;
-  private CANSparkMax frontRightMotor = new CANSparkMax(Constants.DriveSystemConstants.FRONT_RIGHT_MOTOR_CAN_ID, MotorType.kBrushless);
-  private CANSparkMax rearLeftMotor = new CANSparkMax(Constants.DriveSystemConstants.REAR_LEFT_MOTOR_CAN_ID, MotorType.kBrushless);
-  private CANSparkMax rearRightMotor = new CANSparkMax(Constants.DriveSystemConstants.REAR_RIGHT_MOTOR_CAN_ID, MotorType.kBrushless);
+  private CANSparkMax frontLeftMotor = new CANSparkMax(Constants.DriveSystem.FRONT_LEFT_MOTOR_CAN_ID, MotorType.kBrushless) ;
+  private CANSparkMax frontRightMotor = new CANSparkMax(Constants.DriveSystem.FRONT_RIGHT_MOTOR_CAN_ID, MotorType.kBrushless);
+  private CANSparkMax rearLeftMotor = new CANSparkMax(Constants.DriveSystem.REAR_LEFT_MOTOR_CAN_ID, MotorType.kBrushless);
+  private CANSparkMax rearRightMotor = new CANSparkMax(Constants.DriveSystem.REAR_RIGHT_MOTOR_CAN_ID, MotorType.kBrushless);
 
   private RelativeEncoder m_frontLeftEncoder = frontLeftMotor.getEncoder();
   private RelativeEncoder m_frontRightEncoder = frontRightMotor.getEncoder();
@@ -40,16 +35,14 @@ public class DriveSubsystem extends SubsystemBase
 
   public DriveSubsystem() 
   {
-    frontLeftMotor.setInverted(Constants.DriveSystemConstants.LEFT_SIDE_MOTORS_INVERTED);
-    frontRightMotor.setInverted(Constants.DriveSystemConstants.RIGHT_SIDE_MOTORS_INVERTED);
-    rearLeftMotor.setInverted(Constants.DriveSystemConstants.LEFT_SIDE_MOTORS_INVERTED);
-    rearRightMotor.setInverted(Constants.DriveSystemConstants.RIGHT_SIDE_MOTORS_INVERTED);
+    frontLeftMotor.setInverted(Constants.DriveSystem.LEFT_SIDE_MOTORS_INVERTED);
+    frontRightMotor.setInverted(Constants.DriveSystem.RIGHT_SIDE_MOTORS_INVERTED);
+    rearLeftMotor.setInverted(Constants.DriveSystem.LEFT_SIDE_MOTORS_INVERTED);
+    rearRightMotor.setInverted(Constants.DriveSystem.RIGHT_SIDE_MOTORS_INVERTED);
 
     m_drive = new MecanumDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
 
-    m_drive.setMaxOutput(.80);
-
-    gyro = new AHRS(SPI.Port.kMXP);
+    m_drive.setMaxOutput(Constants.DriveSystem.MAX_OUTPUT);
 
   }
 

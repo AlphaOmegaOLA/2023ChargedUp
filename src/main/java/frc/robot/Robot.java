@@ -2,9 +2,12 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-// Alpha Omega borrowed base code from: https://github.com/zholly15/5588-Reign-Robotics-Charged-Up-2023
-// and https://github.com/nerdherd/ChargedUp2023/tree/dev/src/main/java/frc/robot
-
+// Alpha Omega borrowed base code from: 
+// https://github.com/zholly15/5588-Reign-Robotics-Charged-Up-2023/tree/master/src/main/java/frc/robot
+// and
+// https://github.com/nerdherd/ChargedUp2023/tree/dev/src/main/java/frc/robot
+// and
+// https://github.com/IronRiders/ChargedUp/tree/main/src/main/java/frc/robot
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;

@@ -11,10 +11,11 @@ package frc.robot;
 
 public final class Constants 
 {
-    public static class DriveSystemConstants
+    public static class DriveSystem
     {
-        public static double k = 0.8;// in DriveSubsystem, changes speed for some reason
-        public static final double K_TURN = 0.25;
+        // Drive speed
+        public static final double MAX_OUTPUT = 0.8;
+        public static final double TURN = 0.25;
         public static final double MAX_SPEED = 0.25;
         public static final int SMART_LIMIT = 80;
 
@@ -29,7 +30,17 @@ public final class Constants
         public static final boolean LEFT_SIDE_MOTORS_INVERTED = false;
     }
 
-    public static class OperatorConstants
+    public static class ArmSystem
+    {
+        public static final int LIFT_ARM_MOTOR_CAN_ID = 5;
+        public static final int LIFT_ARM_MOTOR_CURRENT_LIMIT = 10;
+        public static final int EXTEND_ARM_MOTOR_CAN_ID = 6;
+        public static final int EXTEND_ARM_MOTOR_CURRENT_LIMIT = 10;
+        public static final double LIFT_ARM_MOTOR_POWER = 1.0;
+        public static final double EXTEND_ARM_MOTOR_POWER = 1.0;
+    }
+
+    public static class Operator
     {        
         // Xbox Controller Buttons
         public static final int A_BUTTON_XBOX = 1;
