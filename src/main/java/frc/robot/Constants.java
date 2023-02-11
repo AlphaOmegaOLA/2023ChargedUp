@@ -40,6 +40,12 @@ public final class Constants
         public static final double EXTEND_ARM_MOTOR_POWER = 1.0;
     }
 
+    public static class ClawSubsystem
+    {
+        public static final int CLAW_SOLENOID_EXTEND_PWM = 0;
+        public static final int CLAW_SOLENOID_RETRACT_PWM = 1;
+    }
+
     public static class Operator
     {        
         // Xbox Controller Buttons

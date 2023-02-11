@@ -21,7 +21,7 @@ import frc.robot.Constants;
 public class DriveSubsystem extends SubsystemBase 
 {
 
-  public static MecanumDrive m_drive;
+  public static MecanumDrive drive;
 
   private CANSparkMax frontLeftMotor = new CANSparkMax(Constants.DriveSystem.FRONT_LEFT_MOTOR_CAN_ID, MotorType.kBrushless) ;
   private CANSparkMax frontRightMotor = new CANSparkMax(Constants.DriveSystem.FRONT_RIGHT_MOTOR_CAN_ID, MotorType.kBrushless);
@@ -40,21 +40,21 @@ public class DriveSubsystem extends SubsystemBase
     rearLeftMotor.setInverted(Constants.DriveSystem.LEFT_SIDE_MOTORS_INVERTED);
     rearRightMotor.setInverted(Constants.DriveSystem.RIGHT_SIDE_MOTORS_INVERTED);
 
-    m_drive = new MecanumDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
+    drive = new MecanumDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
 
-    m_drive.setMaxOutput(Constants.DriveSystem.MAX_OUTPUT);
+    drive.setMaxOutput(Constants.DriveSystem.MAX_OUTPUT);
 
   }
 
   public void mecanumDrive(double leftY, double leftX, double rightX)
   {
-    m_drive.driveCartesian(-1*leftY, leftX, rightX);
+    drive.driveCartesian(-1*leftY, leftX, rightX);
   }
 
   @Override
   public void periodic() 
   {
-    m_drive.feedWatchdog(); // check this
+    drive.feedWatchdog(); // check this
   }
 
 }

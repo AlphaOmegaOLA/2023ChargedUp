@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants;
 
-public class ArmSubsystem extends SubsystemBase {
+public class ArmSubsystem extends SubsystemBase 
+{
   private CANSparkMax liftMotor;
   private CANSparkMax extendArmMotor;
 
@@ -49,22 +50,22 @@ public class ArmSubsystem extends SubsystemBase {
 
   public void extend() 
   {
-    liftMotor.set(Constants.ArmSystem.LIFT_ARM_MOTOR_POWER);
+    extendArmMotor.set(Constants.ArmSystem.LIFT_ARM_MOTOR_POWER);
   }
 
   public void retract() 
   {
-    liftMotor.set(-1 * Constants.ArmSystem.LIFT_ARM_MOTOR_POWER);
+    extendArmMotor.set(-1 * Constants.ArmSystem.LIFT_ARM_MOTOR_POWER);
   }
 
   public void raise() 
-  {_
-    extendArmMotor.set(Constants.ArmSystem.EXTEND_ARM_MOTOR_POWER);
+  {
+    liftMotor.set(Constants.ArmSystem.EXTEND_ARM_MOTOR_POWER);
   }
 
   public void lower() 
   {
-    extendArmMotor.set(-1 * Constants.ArmSystem.EXTEND_ARM_MOTOR_POWER);
+    liftMotor.set(-1 * Constants.ArmSystem.EXTEND_ARM_MOTOR_POWER);
   }
 
   public void stop() 

@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 public class RobotContainer 
 {
   // The robot's subsystems and commands are defined here
-  private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();// declaring new drivesystem object
+  private final DriveSubsystem driveSubsystem = new DriveSubsystem();// declaring new drivesystem object
   // private final TurnInPlaceCommand m_autoCommand = new
   // TurnInPlaceCommand(m_driveSubsystem, 90, 0.5);
   //private final DriveDistanceCommand m_autoCommand = new DriveDistanceCommand(m_driveSubsystem, 60, 0.7);
@@ -40,9 +40,9 @@ public class RobotContainer
   {
     // Configure the button bindings
     configureButtonBindings();
-    m_driveSubsystem.setDefaultCommand(
-        new RunCommand(() -> m_driveSubsystem.mecanumDrive(xbox_drive.getLeftY(), xbox_drive.getLeftX(), xbox_drive.getRightX()),
-            m_driveSubsystem));
+    driveSubsystem.setDefaultCommand(
+        new RunCommand(() -> driveSubsystem.mecanumDrive(xbox_drive.getLeftY(), xbox_drive.getLeftX(), xbox_drive.getRightX()),
+            driveSubsystem));
     // ^ Setting the Default Command to m_robotDrive, meaning it will drive as long
     // as nothing else is scheduled
   }

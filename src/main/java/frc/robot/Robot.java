@@ -28,7 +28,7 @@ import edu.wpi.first.cscore.UsbCamera;
 public class Robot extends TimedRobot 
 {
   private Command m_autonomousCommand;
-  private RobotContainer m_robotContainer;
+  private RobotContainer robotContainer;
   
   UsbCamera lifecam;
 
@@ -43,7 +43,7 @@ public class Robot extends TimedRobot
     // Instantiate our RobotContainer. This willS perform all our button bindings,
     // and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+    robotContainer = new RobotContainer();
     lifecam = CameraServer.startAutomaticCapture(0);
   }
 
