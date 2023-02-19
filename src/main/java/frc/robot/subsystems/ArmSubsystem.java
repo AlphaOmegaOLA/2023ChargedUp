@@ -50,22 +50,22 @@ public class ArmSubsystem extends SubsystemBase
 
   public void extend() 
   {
-    extendArmMotor.set(Constants.ArmSystem.LIFT_ARM_MOTOR_POWER);
+    extendArmMotor.set(Constants.ArmSystem.EXTEND_ARM_MOTOR_POWER);
   }
 
   public void retract() 
   {
-    extendArmMotor.set(-1 * Constants.ArmSystem.LIFT_ARM_MOTOR_POWER);
+    extendArmMotor.set(-1 * Constants.ArmSystem.EXTEND_ARM_MOTOR_POWER);
   }
 
   public void raise() 
   {
-    liftMotor.set(Constants.ArmSystem.EXTEND_ARM_MOTOR_POWER);
+    liftMotor.set(Constants.ArmSystem.LIFT_ARM_MOTOR_POWER);
   }
 
   public void lower() 
   {
-    liftMotor.set(-1 * Constants.ArmSystem.EXTEND_ARM_MOTOR_POWER);
+    liftMotor.set(-1 * Constants.ArmSystem.LIFT_ARM_MOTOR_POWER);
   }
 
   public void stop() 

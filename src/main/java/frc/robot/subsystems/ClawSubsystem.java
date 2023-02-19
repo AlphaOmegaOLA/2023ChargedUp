@@ -8,8 +8,8 @@ import frc.robot.Constants;
 public class ClawSubsystem extends SubsystemBase
 {
     public DoubleSolenoid clawSolenoid;
-    private final int extend = Constants.ClawSubsystem.CLAW_SOLENOID_EXTEND_PWM;
-    private final int retract = Constants.ClawSubsystem.CLAW_SOLENOID_RETRACT_PWM;
+    private final int extend = Constants.ClawSubsystem.CLAW_SOLENOID_EXTEND_CAN_ID;
+    private final int retract = Constants.ClawSubsystem.CLAW_SOLENOID_RETRACT_CAN_ID;
 
     public ClawSubsystem()
     {

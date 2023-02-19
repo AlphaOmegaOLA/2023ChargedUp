@@ -46,7 +46,7 @@ public final class Constants
         public static final int CLAW_SOLENOID_RETRACT_CAN_ID = 8;
     }
 
-    public static class Operator
+    public static class Controls
     {        
         // Xbox Controller Buttons
         public static final int A_BUTTON_XBOX = 1;

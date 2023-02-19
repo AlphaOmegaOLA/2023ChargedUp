@@ -2,14 +2,29 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
+// Baseline robot infrastructure
 package frc.robot;
-
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
-//import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.RunCommand;
-//import frc.robot.Constants;
+
+// Joysticks
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+
+// Drive System
+import frc.robot.subsystems.DriveSubsystem;
+
+// Claw
+import frc.robot.subsystems.ClawSubsystem;
+import frc.robot.commands.CloseClawCommand;
+import frc.robot.commands.OpenClawCommand;
+
+// Arm
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.commands.ExtendArmCommand;
+import frc.robot.commands.RetractArmCommand;
+import frc.robot.commands.RaiseArmCommand;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -23,15 +38,25 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 public class RobotContainer 
 {
   // The robot's subsystems and commands are defined here
-  private final DriveSubsystem driveSubsystem = new DriveSubsystem();// declaring new drivesystem object
-  // private final TurnInPlaceCommand m_autoCommand = new
-  // TurnInPlaceCommand(m_driveSubsystem, 90, 0.5);
-  //private final DriveDistanceCommand m_autoCommand = new DriveDistanceCommand(m_driveSubsystem, 60, 0.7);
-  //public static LimelightSubsystem m_LimelightSubsystem = new LimelightSubsystem();
 
+  // Joysticks
   public static XboxController xbox_drive = new XboxController(0);
-  //public static XboxController operatorController = new XboxController(1);
+  public static XboxController xbox_operator = new XboxController(1);
 
+  // Drive system
+  private final DriveSubsystem driveSubsystem = new DriveSubsystem();
+
+  // Claw system
+  private final ClawSubsystem claw = new ClawSubsystem();
+  private final CloseClawCommand grab = new CloseClawCommand(claw);
+  private final OpenClawCommand release = new OpenClawCommand(claw);
+
+  // Arm system
+  private final ArmSubsystem arm = new ArmSubsystem();
+  private final ExtendArmCommand extend = new ExtendArmCommand(arm);
+  private final RetractArmCommand retract = new RetractArmCommand(arm);
+  private final RaiseArmCommand raise = new RaiseArmCommand(arm);
+  private final RaiseArmCommand lower = new RaiseArmCommand(arm);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -40,6 +65,7 @@ public class RobotContainer
   {
     // Configure the button bindings
     configureButtonBindings();
+
     driveSubsystem.setDefaultCommand(
         new RunCommand(() -> driveSubsystem.mecanumDrive(xbox_drive.getLeftY(), xbox_drive.getLeftX(), xbox_drive.getRightX()),
             driveSubsystem));
@@ -57,7 +83,26 @@ public class RobotContainer
    */
   private void configureButtonBindings() 
   {
+    // Claw
+    new JoystickButton(xbox_operator, Constants.Controls.X_BUTTON_XBOX)
+      .whileTrue(grab);
 
+    new JoystickButton(xbox_operator, Constants.Controls.Y_BUTTON_XBOX)
+      .whileTrue(release);
+
+    // Arm extend/retract
+    new JoystickButton(xbox_operator, Constants.Controls.B_BUTTON_XBOX)
+      .whileTrue(extend);
+
+    new JoystickButton(xbox_operator, Constants.Controls.A_BUTTON_XBOX)
+      .whileTrue(retract);
+
+    // Arm raise/lower
+    new JoystickButton(xbox_operator, Constants.Controls.RIGHT_BUMPER_XBOX)
+    .whileTrue(raise);
+
+    new JoystickButton(xbox_operator, Constants.Controls.LEFT_BUMPER_XBOX)
+    .whileTrue(lower);
   }
 
   /**
