@@ -42,8 +42,8 @@ public final class Constants
 
     public static class ClawSubsystem
     {
-        public static final int CLAW_SOLENOID_EXTEND_PWM = 0;
-        public static final int CLAW_SOLENOID_RETRACT_PWM = 1;
+        public static final int CLAW_SOLENOID_EXTEND_CAN_ID = 7;
+        public static final int CLAW_SOLENOID_RETRACT_CAN_ID = 8;
     }
 
     public static class Operator
