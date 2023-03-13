@@ -38,12 +38,16 @@ public final class Constants
         public static final int EXTEND_ARM_MOTOR_CURRENT_LIMIT = 10;
         public static final double LIFT_ARM_MOTOR_POWER = 1.0;
         public static final double EXTEND_ARM_MOTOR_POWER = 1.0;
+        public static final double MOVE_ARM_PID_KP = 1.0;
+        public static final double MOVE_ARM_PID_KI = 1.0;
+        public static final double MOVE_ARM_PID_KD = 1.0;
     }
 
-    public static class ClawSubsystem
+    public static class Clawsystem
     {
-        public static final int CLAW_SOLENOID_EXTEND_CAN_ID = 7;
-        public static final int CLAW_SOLENOID_RETRACT_CAN_ID = 8;
+        // Need to move these to 1,2 on the robot
+        public static final int CLAW_SOLENOID_EXTEND_CAN_ID = 6;
+        public static final int CLAW_SOLENOID_RETRACT_CAN_ID = 7;
     }
 
     public static class Controls
